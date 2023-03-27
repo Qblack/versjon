@@ -17,7 +17,8 @@ from .versjon_tool import run
 @click.option("-i", "--no_index", is_flag=True)
 @click.option("-s", "--no_stable_index", is_flag=True)
 @click.option("-u", "--user_templates", default=None)
-def cli(docs_path, exclude_pattern, stable_version, verbose, no_index, no_stable_index, user_templates):
+@click.option("-q", "--silent", is_flag=True)
+def cli(docs_path, exclude_pattern, stable_version, verbose, no_index, no_stable_index, user_templates, silent):
     try:
         run(
             docs_path=docs_path,
@@ -26,6 +27,7 @@ def cli(docs_path, exclude_pattern, stable_version, verbose, no_index, no_stable
             no_index=no_index,
             no_stable_index=no_stable_index,
             user_templates=user_templates,
+            silent=silent,
         )
     except Exception as e:
 

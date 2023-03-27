@@ -119,7 +119,7 @@ def create_general_context(docs_dir, builds, stable_version=None):
     return context
 
 
-def run(docs_path, exclude_pattern, no_index, no_stable_index, user_templates, stable_version=None):
+def run(docs_path, exclude_pattern, no_index, no_stable_index, user_templates, stable_version=None, silent=False):
     """Run the versjon tool.
 
     :param docs_path: The path to the documentation as a string
@@ -133,7 +133,8 @@ def run(docs_path, exclude_pattern, no_index, no_stable_index, user_templates, s
 
     # Get all the Sphinx builds in the the path
     builds = find_builds(docs_dir=docs_path)
-    print(builds)
+    if not silent:
+        print(builds)
 
     # Our jinja2 template rendere use to geneate the HTML
     inject_render = template_render.TemplateRender(user_path=user_templates)
